@@ -10,8 +10,7 @@ function App() {
   const [movieName, setMovieName]= useState('');
   const [review, setReview] = useState('');
   const [movieReviewList, setMovieList] =useState ([]);
-
-  const [newReview, setNewReview] = useState("")
+ 
 
   useEffect(()=>{
     axios.get('http://localhost:3001/api/get').then((response)=>{
@@ -36,13 +35,6 @@ const deleteReview = (movie)=>{
 
 };
 
-const updateReview = (movie)=>{
-  axios.put(`http://localhost:3001/api/update/`, {
-    movieName:movie, movieReview: newReview,
-  });
-  setNewReview("");
-
-};
 
   return (
     <div className="App">
@@ -50,7 +42,7 @@ const updateReview = (movie)=>{
 
          <div className="form">
         
-          <label>Comentário</label>
+          <label>Comentário sobre Filmes</label>
 
           <input type="text" name="movieName" onChange= {(e) =>{
             setMovieName(e.target.value);
